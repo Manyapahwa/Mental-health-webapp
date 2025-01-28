@@ -47,7 +47,7 @@ const MoodTrack = () => {
       {
         label: 'Mood Frequency',
         data: moodCounts,
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        backgroundColor: 'rgba(42, 114, 161, 0.54)',
         borderWidth: 1,
       },
     ],
@@ -56,7 +56,7 @@ const MoodTrack = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-12 mt-20 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-lg border border-gray-400" style={{ maxWidth: '840px', marginTop: '100px' }}>
+      <div className="container mx-auto p-12 mt-20 bg-violet-100 rounded-lg shadow-lg border border-gray-400" style={{ maxWidth: '840px', marginTop: '100px' }}>
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <div className="text-center">
             <input

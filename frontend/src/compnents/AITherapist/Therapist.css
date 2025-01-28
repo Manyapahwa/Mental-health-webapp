@@ -78,7 +78,7 @@
   
   .send-button {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #f8649b;
     color: #FFFFFF;
     border: none;
     border-radius: 20px;
@@ -87,7 +87,7 @@
   }
   
   .send-button:hover {
-    background-color: #0056b3;
+    background-color: #f8649b;
   }
 
   

@@ -4,8 +4,6 @@ import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 
 import Loader from "react-js-loader";
-import { Audio } from 'react-loader-spinner';
-import Readjournal from '../journal/Readjournal';
 import defaultProfilePicture from './download2.jpg';
 
 const Profile = () => {
@@ -95,14 +93,6 @@ const Profile = () => {
 
                     </div>
                   </div>
-                  <div className="w-full lg:w-4/12 px-4 lg:order-1">
-                    <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">{userDetails.journals.length}</span>
-                        <span className="text-sm text-blueGray-400">Number of Journals</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
@@ -126,24 +116,12 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="flex justify-center mt-6">
-                    <Link to={`/${username}/createjournal`}>
-                      <button
-                        className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                      >
-                        Create Journal
-                      </button>
-                    </Link>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <div className='-mt-20'>
-          <Readjournal />
-        </div>
       </main>
     </>
   );

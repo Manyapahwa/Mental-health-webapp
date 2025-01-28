@@ -12,12 +12,8 @@ import AnonymousSharing from './compnents/anonymous/AnonymousSharing';
 import AnonymousPost from './compnents/anonymous/AnonymousPost';
 import AllAnonymousPost from './compnents/anonymous/AllAnonymousPost';
 import AboutUs from './compnents/aboutUs/AboutUs';
-import Createjournal from './compnents/journal/Createjournal.jsx';
-import Readjournal from './compnents/journal/Readjournal.jsx';
-import JournalDetail from './compnents/journal/Readonejournal.jsx';
 import MoodTrack from './compnents/moodtrack/MoodTrack.jsx';
 import Quiz from './compnents/quiz/Quiz.jsx';
-import UpdateJournal from './compnents/journal/Updatejournal.jsx';
 import Therapist from './compnents/AITherapist/Therapist.jsx';
 
 const PrivateRoute = ({ children }) => {
@@ -51,13 +47,6 @@ function App() {
         <Route path="/:username/quiz" element={<PrivateRoute><Quiz /></PrivateRoute>} />
         <Route path="/:username/therapist" element={<PrivateRoute><Therapist /></PrivateRoute>} />
         <Route path="/aboutus" element={<AboutUs />} />
-        
-
-
-        <Route path='/:username/createjournal' element={<PrivateRoute><Createjournal /></PrivateRoute>} />
-        <Route path='/:username/readjournals' element={<PrivateRoute><Readjournal /></PrivateRoute>} />
-        <Route path='/:username/readjournals/:id' element={<PrivateRoute><JournalDetail /></PrivateRoute>} />
-        <Route path="/:username/journals/:id/edit" element={<PrivateRoute><UpdateJournal /> </PrivateRoute>} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

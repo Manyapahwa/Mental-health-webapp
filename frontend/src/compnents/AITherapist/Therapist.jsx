@@ -84,7 +84,7 @@ const Therapist = () => {
             placeholder="Type your message..."
             className="input-field"
           />
-          <button onClick={handleSend} className="send-button">Send</button>
+          <button onClick={handleSend} className="send-button bg-pink-100">Send</button>
         </div>
       </div>
     </>

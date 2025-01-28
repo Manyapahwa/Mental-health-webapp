@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import Loader from 'react-js-loader';
-import Navbar from '../navbar/Navbar';
-
-
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Navbar from "../navbar/Navbar";
+import { FaLeaf, FaWater, FaMountain } from "react-icons/fa";
+import Loader from "react-js-loader";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -29,97 +29,139 @@ const questions = [
 const options = ["Not at all", "Several days", "More than half the days", "Nearly every day"];
 
 const Quiz = () => {
-  const [answers, setAnswers] = useState(Array(questions.length).fill(''));
+  const [answers, setAnswers] = useState(Array(questions.length).fill(""));
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [hoveredOption, setHoveredOption] = useState(null);
 
-  const handleChange = (index, value) => {
+  const handleChange = (value) => {
     const newAnswers = [...answers];
-    newAnswers[index] = value;
+    newAnswers[currentQuestion] = value;
     setAnswers(newAnswers);
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
   };
 
-  const handleOptionHover = (index) => {
-    setHoveredOption(index);
-  };
-
-  const handleOptionLeave = () => {
-    setHoveredOption(null);
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
   };
 
   const handleSubmit = async () => {
     setLoading(true);
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      const prompt = `Analyze the following mental health quiz answers and generate a short summary regarding the persons mental health and what can he do, use points and headings and generate answer separated by paragraphs, also give a space between different paragraphs:\n\n${questions.map((q, i) => `${i+1}. ${q} ${answers[i]}`).join('\n')}`;
+      const prompt = `You are a mental health and wellness assistant. Analyze the following quiz responses and provide insights.\n\n${questions.map((q, i) => `${i + 1}. ${q}: ${answers[i]}`).join("\n")}`;
+
       const result = await model.generateContent(prompt);
       const response = await result.response;
       let text = await response.text();
-  
-      // Replace **word** with <strong>word</strong>
-      text = text.replace(/\*\*(.*?)\*\*/g, '$1');
-  
+
+      // Replace *word* with <strong>word</strong>
+      text = text.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
+
       setResult(text);
     } catch (error) {
-      console.error('Error analyzing answers:', error);
-      setResult('An error occurred while analyzing the answers.');
+      console.error("Error analyzing answers:", error);
+      setResult("An error occurred while analyzing the answers.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <>
-    <Navbar />
-    <div className="max-w-4xl mx-auto p-6" style={{background: 'linear-gradient(to right, #D1D5DB, #E5E7EB, #F3F4F6)', borderRadius: '1rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)', marginTop: '6rem'}}>
-      <h1 className="text-2xl font-bold mb-6 text-center">Mental Health Quiz</h1>
-      {questions.map((question, index) => (
-        <div key={index} className="mb-4 text-black font-bold m-12">
-          <p className={`mb-2 text-lg`}>{`${index+1}. ${question}`}</p>
-          <div className="flex flex-col space-y-2">
-            {options.map((option, optionIndex) => (
-              <label
-                key={optionIndex}
-                className={`flex items-center p-3 px-5 block cursor-pointer rounded-full border border-black border-opacity-20 ${hoveredOption === index ? 'hover:bg-black hover:text-white' : 'hover:bg-gray-200'}`}
-                onMouseEnter={() => handleOptionHover(index)}
-                onMouseLeave={handleOptionLeave}
-              >
-                <input
-                  type="radio"
-                  name={`question-${index}`}
-                  value={option}
-                  checked={answers[index] === option}
-                  onChange={() => handleChange(index, option)}
-                  className="accent-primary"
-                />
-                <span className="ps-3 text-lg font-normal">{option}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      ))}
-      <button
-  onClick={handleSubmit}
-  className="mt-6 w-half bg-blue-500 hover:bg-blue-700 text-white py-2 px-6 rounded-full transition-colors duration-300 ml-72"
->
-  Submit
-</button>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200">
+      <Navbar />
+      <div className="max-w-4xl mx-auto p-6 pt-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-md rounded-2xl p-8 shadow-lg"
+        >
+          <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Mental Health Quiz</h1>
+          {!loading && !result && (
+            <motion.div
+              key={currentQuestion}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="text-xl mb-4 text-gray-700">{`${currentQuestion + 1}. ${questions[currentQuestion]}`}</p>
+              <div className="space-y-3">
+                {options.map((option, optionIndex) => (
+                  <motion.button
+                    key={optionIndex}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleChange(option)}
+                    className={`w-full p-3 text-left rounded-lg  ${
+                      answers[currentQuestion] === option
+                        ? "bg-gradient-to-r from-blue-500 to-green-500 text-white"
+                        : "bg-gray-100 text-gray-800 hover:bg-gradient-to-r hover:from-gray-200 hover:to-gray-300"
+                    }`}
+                  >
+                    {option}
+                  </motion.button>
+                ))}
+              </div>
+              <div className="flex justify-between mt-6">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handlePrevious}
+                  disabled={currentQuestion === 0}
+                  className="px-6 py-2 bg-pink-600 text-white rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Previous
+                </motion.button>
+                {currentQuestion === questions.length - 1 ? (
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={handleSubmit}
+                    className="px-6 py-2 bg-pink-600 text-white rounded-full"
+                  >
+                    Submit
+                  </motion.button>
+                ) : (
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setCurrentQuestion(currentQuestion + 1)}
+                    disabled={!answers[currentQuestion]}
+                    className="px-6 py-2 bg-pink-600 text-white rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Next
+                  </motion.button>
+                )}
+              </div>
+            </motion.div>
+          )}
 
-      {loading ? (
-        <div className="flex justify-center mt-6">
-          <Loader type="spinner-cub" bgColor={"#000000"} color={"#FFFFFF"} title={"spinner-cub"} size={100} />
-        </div>
-      ) : (
-        result && (
-          <div className="mt-6 p-4 bg-gray-100 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">Analysis Result</h2>
-            <p className="whitespace-pre-wrap">{result}</p>
-          </div>
-        )
-      )}
+          {loading && (
+            <div className="flex justify-center items-center h-64">
+              <Loader type="spinner-cub" bgColor={"#4B0082"} color={"#FFFFFF"} title={"spinner-cub"} size={100} />
+            </div>
+          )}
+
+          {result && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-6 p-6 bg-white rounded-lg shadow-md"
+            >
+              <h2 className="text-2xl font-semibold mb-4 text-gray-800">Analysis Result</h2>
+              <p className="text-gray-700 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: result }}></p>
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
     </div>
-    </>
   );
 };
 

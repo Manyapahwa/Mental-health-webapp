@@ -1,53 +1,43 @@
-import React from 'react'
+import React from "react";
 
 const Home1 = () => {
   return (
-    <div className="relative isolate px-6 pt-14 lg:px-8 ">
-        <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+    <div className="relative min-h-screen bg-white text-gray-800">
+      {/* Navbar */}
 
-          </div>
-          <div className="text-center -mt-24">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Welcome to Mindfulness.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-            Welcome to our mental health app, where you can anonymously chat, track your mood, and receive personalized support through quizzes and an AI assistant. Prioritize your emotional well-being discreetly and effectively with our compassionate community.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              
-              <a href="/aboutus" className="text-sm font-semibold leading-6 text-gray-900">
-                About Us <span aria-hidden="true">→</span>
-              </a>
-            </div>
+      {/* Hero Section */}
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-16 lg:py-24">
+        {/* Left Side (Logo & Branding) */}
+        <div className="flex flex-col items-center md:items-start">
+          <div className="relative">
+            {/* Increase the size of the logo */}
+            <img
+              src="/images/logo.jpg" // Adjust the path based on your image location
+              alt="Brand Logo"
+              className="w-60 h-60 object-contain" // Adjusted size
+            />
           </div>
         </div>
-        <div
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-          aria-hidden="true"
-        >
-          <div
-            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
+
+        {/* Right Side (Main Content) */}
+        <div className="text-center md:text-left">
+          <h2 className="text-5xl font-bold text-gray-900">Your Healing Guide.</h2>
+          <p className="mt-4 text-gray-700 text-lg max-w-xl leading-relaxed">
+          Discover a safe space dedicated to your mental and emotional health.
+           Our platform offers confidential support through mood tracking, insightful quizzes,
+            and a compassionate AI therapist, empowering you to take control of your well-being. 
+          Experience holistic self-care in a welcoming community, where your peace of mind matters. 
+            
+          </p>
+          <div className="mt-6">
+            <a href="/aboutus" className="text-lg font-semibold text-gray-900 hover:underline">
+              About Us →
+            </a>
+          </div>
         </div>
       </div>
-  )
-}
+    </div>
+  );
+};
 
 export default Home1;
