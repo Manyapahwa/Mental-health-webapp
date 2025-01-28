@@ -82,7 +82,7 @@ const Navbar = () => {
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-8 w-auto" src="/images/logo.jpg" alt="Your Company" />
+              <img className="h-10 w-auto" src="/images/meditation.jpg" alt="Your Company" />
             </a>
           </div>
           <div className="flex lg:hidden">

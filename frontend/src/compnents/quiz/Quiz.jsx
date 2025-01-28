@@ -9,22 +9,22 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const questions = [
-  "How often have you felt down, depressed, or hopeless in the past two weeks?",
+  "How often do you wake up feeling refreshed and well-rested?",
   "How often do you feel little interest or pleasure in doing things?",
   "How often do you feel nervous, anxious, or on edge?",
   "How often do you have trouble relaxing?",
-  "How often do you feel so restless that it is hard to sit still?",
+  "How often do you feel irritable or short-tempered?",
   "How often do you feel fatigued or have little energy?",
   "How often do you feel bad about yourself, or that you are a failure or have let yourself or your family down?",
-  "How often do you have trouble concentrating on things, such as reading the newspaper or watching television?",
+  "How often do you find it hard to finish tasks because of a lack of motivation or focus?",
   "How often do you feel afraid, as if something awful might happen?",
-  "How often do you have trouble falling or staying asleep, or sleeping too much?",
+  "How often do you feel disconnected from the people around you or your surroundings?",
   "How often do you feel easily annoyed or irritable?",
-  "How often do you experience physical symptoms such as headaches, stomachaches, or muscle pain?",
-  "How often do you feel disconnected or detached from reality or your surroundings?",
-  "How often do you find it difficult to control your worry?",
-  "How often do you avoid social situations due to fear of being judged or embarrassed?",
-];
+"How often do you experience difficulty remembering things or organizing your thoughts?",
+"How often do you feel overly worried about small, everyday things?",
+"How often do you wake up in the middle of the night and find it hard to go back to sleep?",
+"How often do you avoid starting new tasks because they feel too overwhelming?",
+]
 
 const options = ["Not at all", "Several days", "More than half the days", "Nearly every day"];
 

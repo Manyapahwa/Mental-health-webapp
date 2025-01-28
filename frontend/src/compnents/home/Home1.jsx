@@ -12,9 +12,9 @@ const Home1 = () => {
           <div className="relative">
             {/* Increase the size of the logo */}
             <img
-              src="/images/logo.jpg" // Adjust the path based on your image location
+              src="/images/meditation.jpg" // Adjust the path based on your image location
               alt="Brand Logo"
-              className="w-60 h-60 object-contain" // Adjusted size
+              className="w-70 h-80 object-contain" // Adjusted size
             />
           </div>
         </div>
