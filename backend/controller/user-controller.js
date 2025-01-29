@@ -1,5 +1,4 @@
 import User from '../models/userModel.js';
-import Journal from '../models/journalModel.js';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
 import bcrypt from 'bcryptjs';
