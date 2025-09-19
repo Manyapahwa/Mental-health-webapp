@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from "react-js-loader";
 const API_URL = process.env.REACT_APP_API_URL;
 
-import Loader from "react-js-loader";
+
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
