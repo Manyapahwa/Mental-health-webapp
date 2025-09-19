@@ -21,7 +21,7 @@ const AnonymousPost = () => {
     };
 
     try {
-      const response = await fetch('${API_URL}/createAnonymousPosts', {
+      const response = await fetch(`${API_URL}/createAnonymousPosts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

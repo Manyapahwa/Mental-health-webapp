@@ -6,22 +6,40 @@ import bcrypt from 'bcryptjs';
 
 // User Signup
 // User Signup
-export const userSignup = async (req, res) => {
-  try {
-      let exist = await User.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] });
-      if (exist) {
-          return res.status(409).json({ msg: 'Username or email already exists!' });
-      }
-      const newUser = new User(req.body);
-      if (req.file) {
-          newUser.profilePicture = req.file.path; // save the file path to the user document
-      }
-      await newUser.save();
-      return res.status(200).json(newUser);
-  } catch (error) {
-      return res.status(500).json({ error: error.message });
-  }
+export const userSignup= async(req,res) =>{
+    try{
+        let exist=await User.findOne({
+            $or:[
+                {username:req.body.username},
+                {email:req.body.email}
+            
+
+        ]
+    });
+
+    if(exist){
+        //return will end the execution of the current function 
+        //res is used to send the response from the server to the client 
+        //status sets the http status code of the response -409 means conflict
+        //.json helps to send the json response back to the client 
+        return res.status(409).json({msg:'Username or email already exists!'});
+    }
+
+    //otherwise if it doesn't matches ,creating a new user
+    const newUser= new User(req.body);
+    //if the profile picture is also uploaded
+    if(req.file){
+        newUser.profilePicture=req.file.path;
+    }
+    await newUser.save();
+    return res.status(200).json(newUser);
+    //200 ok 
+    }catch(error){
+         console.error("Signup error:", error);
+        return res.status(500).json({error:error.message});
+    }
 };
+
 
 
 

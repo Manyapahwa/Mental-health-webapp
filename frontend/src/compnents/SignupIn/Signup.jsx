@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PhotoIcon } from '@heroicons/react/24/solid';
-const API_URL = "https://mental-health-webapp-production-31bf.up.railway.app";
+const API_URL = "http://localhost:4000/api";
 
 export default function Signup() {
     const [formData, setFormData] = useState({

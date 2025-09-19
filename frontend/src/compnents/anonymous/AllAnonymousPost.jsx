@@ -71,7 +71,7 @@ const AllAnonymousPost = () => {
   useEffect(() => {
     const fetchAnonymousPosts = async () => {
       try {
-        const response = await axios.get('${API_URL}/anonymousPosts');
+        const response = await axios.get(`${API_URL}/anonymousPosts`);
         setAnonymousPosts(response.data);
       } catch (error) {
         console.error('Error fetching anonymous posts:', error);

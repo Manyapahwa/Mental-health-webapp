@@ -25,7 +25,7 @@ const MoodTrack=()=>{
 
   useEffect(() => {
     // Fetch existing mood data for the user
-    axios.get(`${API_URL}/api/moods/${username}`)
+    axios.get(`${API_URL}/moods/${username}`)
       .then(response => setMoodData(response.data))
       .catch(error => console.error('Error fetching mood data:', error));
   }, [username]);
@@ -53,7 +53,7 @@ const MoodTrack=()=>{
 
     const handleMoodSelect=(emoji)=>{
         setMood(emoji);
-        axios.post(`${API_URL}/api/moods/${username}`,{date:selectedDate,mood:emoji})
+        axios.post(`${API_URL}/moods/${username}`,{date:selectedDate,mood:emoji})
         .then(response=> {
              setMoodData(prevData => [...prevData,response.data]);
              setIsModalOpen(false);

@@ -46,7 +46,7 @@ const __dirname = path.dirname(__filename);
 
 
 Connection();
-app.use('/', userRoutes);
+app.use('/api', userRoutes);
 
 const port = process.env.PORT || 4000;
 
