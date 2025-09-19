@@ -23,7 +23,7 @@ const server = http.createServer(app); // Create HTTP server
 
 app.use(express.json());
 app.use(cors({
-  origin: '*',
+  origin: 'https://mental-health-manya-rho.vercel.app/',
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
   credentials: true,
 
