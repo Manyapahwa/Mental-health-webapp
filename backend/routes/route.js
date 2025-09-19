@@ -28,8 +28,8 @@ router.post('/createAnonymousPosts', createAnonymousPost);
 
 //passport.authenticate('jwt', { session: false })
 
-router.get ('/api/moods/:username', getMoods);
-router.post ('/api/moods/:username', createMood);
+router.get ('/moods/:username', getMoods);
+router.post ('/moods/:username', createMood);
 
 
 

@@ -75,6 +75,8 @@ export default function Signup() {
         }
     };
 
+    
+
     const handleCancel = () => {
         setFormData({
             username: '',

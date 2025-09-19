@@ -52,7 +52,7 @@ const Quiz = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       const prompt = `You are a mental health and wellness assistant. Analyze the following quiz responses and provide insights.\n\n${questions.map((q, i) => `${i + 1}. ${q}: ${answers[i]}`).join("\n")}`;
 
       const result = await model.generateContent(prompt);

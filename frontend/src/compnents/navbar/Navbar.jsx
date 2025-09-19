@@ -105,7 +105,7 @@ const Navbar = () => {
             <a 
               href="#"
               onClick={(e) => handleRestrictedClick(e, `/${user}/therapist`)} 
-              className="text-sm font-semibold leading-6 text-gray-900">AI Therapist</a>
+              className="text-sm font-semibold leading-7 text-gray-900">AI Therapist</a>
             <a 
               href="#"
               onClick={(e) => handleRestrictedClick(e, `/${user}/quiz`)} 

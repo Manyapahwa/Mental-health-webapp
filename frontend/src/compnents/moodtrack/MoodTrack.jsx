@@ -43,8 +43,8 @@ const MoodTrack = () => {
 
   const data = {
     labels: moodLabels,
-    datasets: [
-      {
+      datasets: [
+        {
         label: 'Mood Frequency',
         data: moodCounts,
         backgroundColor: 'rgba(42, 114, 161, 0.54)',
@@ -57,7 +57,9 @@ const MoodTrack = () => {
     <>
       <Navbar />
       <div className="container mx-auto p-12 mt-20 bg-violet-100 rounded-lg shadow-lg border border-gray-400" style={{ maxWidth: '840px', marginTop: '100px' }}>
+        
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+
           <div className="text-center">
             <input
               type="date"
@@ -65,8 +67,10 @@ const MoodTrack = () => {
               onChange={handleDateChange}
             />
           </div>
+
           <Transition appear show={isModalOpen} as={React.Fragment}>
             <Dialog as="div" className="relative z-10" onClose={() => setIsModalOpen(false)}>
+
               <Transition.Child
                 as={React.Fragment}
                 enter="ease-out duration-300"
@@ -78,6 +82,7 @@ const MoodTrack = () => {
               >
                 <div className="fixed inset-0 bg-black bg-opacity-25" />
               </Transition.Child>
+
               <div className="fixed inset-0 overflow-y-auto">
                 <div className="flex items-center justify-center min-h-full p-4 text-center">
                   <Transition.Child
@@ -89,10 +94,13 @@ const MoodTrack = () => {
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                   >
+                  
                     <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                      
                       <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                         How do you feel today?
                       </Dialog.Title>
+                      
                       <div className="mt-4 flex justify-around">
                         {moodLabels.map((emoji, index) => (
                           <button
@@ -104,7 +112,8 @@ const MoodTrack = () => {
                           </button>
                         ))}
                       </div>
-                    </Dialog.Panel>
+                   </Dialog.Panel>
+
                   </Transition.Child>
                 </div>
               </div>

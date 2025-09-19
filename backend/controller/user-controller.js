@@ -29,6 +29,7 @@ export const userSignup = async (req, res) => {
 
 export const userLogin = async (req, res) => {
   try {
+    //destructuring the object
     const { username, password } = req.body;
 
     // Find user by username
