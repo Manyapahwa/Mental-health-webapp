@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PhotoIcon } from '@heroicons/react/24/solid';
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://mental-health-webapp-production-31bf.up.railway.app";
 
 export default function Signup() {
     const [formData, setFormData] = useState({
