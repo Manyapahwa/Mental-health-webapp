@@ -50,7 +50,7 @@ const Navbar = () => {
   const confirmDelete = async () => {
     try {
       // Call the backend route to delete the user
-      await fetch(${API_URL}/delete-user/${user}, {
+      await fetch(`${API_URL}/delete-user/${user}`, {
         method: 'DELETE',
       });
       // Perform logout after deletion
@@ -108,19 +108,19 @@ const Navbar = () => {
           <div className="hidden lg:flex lg:gap-x-12">
             <a 
               href="#"
-              onClick={(e) => handleRestrictedClick(e, /${user}/mood)} 
+              onClick={(e) => handleRestrictedClick(e, `/${user}/mood`)} 
               className="text-sm font-semibold leading-6 text-gray-900">Mood Tracker</a>
             <a 
               href="#"
-              onClick={(e) => handleRestrictedClick(e, /${user}/therapist)} 
+              onClick={(e) => handleRestrictedClick(e, `/${user}/therapist`)} 
               className="text-sm font-semibold leading-7 text-gray-900">AI Therapist</a>
             <a 
               href="#"
-              onClick={(e) => handleRestrictedClick(e, /${user}/quiz)} 
+              onClick={(e) => handleRestrictedClick(e, `/${user}/quiz`)} 
               className="text-sm font-semibold leading-6 text-gray-900">Quiz</a>
             <a 
               href="#"
-              onClick={(e) => handleRestrictedClick(e, /${user}/anonymoussharing)} 
+              onClick={(e) => handleRestrictedClick(e, `/${user}/anonymoussharing`)} 
               className="text-sm font-semibold leading-6 text-gray-900">Anonymous Sharing</a>
             <a href="/aboutus" className="text-sm font-semibold leading-6 text-gray-900">About Us</a>
           </div>
@@ -143,7 +143,7 @@ const Navbar = () => {
                 </div>
                 {dropdownOpen && (
                   <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
-                    <a href={/${user}/profile} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
+                    <a href={`/${user}/profile`} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
                     <a onClick={(e) => handleLogout(e)} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
                     <a onClick={handleDelete} href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Delete Profile</a>
                   </div>
@@ -185,7 +185,7 @@ const Navbar = () => {
                     <a 
                       href="#"
                       onClick={(e) => {
-                        handleRestrictedClick(e, /${user}/mood);
+                        handleRestrictedClick(e, `/${user}/mood`);
                         setMobileMenuOpen(false);
                       }} 
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -194,7 +194,7 @@ const Navbar = () => {
                     <a 
                       href="#"
                       onClick={(e) => {
-                        handleRestrictedClick(e, /${user}/therapist);
+                        handleRestrictedClick(e, `/${user}/therapist`);
                         setMobileMenuOpen(false);
                       }} 
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -203,7 +203,7 @@ const Navbar = () => {
                     <a 
                       href="#"
                       onClick={(e) => {
-                        handleRestrictedClick(e, /${user}/quiz);
+                        handleRestrictedClick(e, `/${user}/quiz`);
                         setMobileMenuOpen(false);
                       }} 
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -212,7 +212,7 @@ const Navbar = () => {
                     <a 
                       href="#"
                       onClick={(e) => {
-                        handleRestrictedClick(e, /${user}/anonymoussharing);
+                        handleRestrictedClick(e,`/${user}/anonymoussharing`);
                         setMobileMenuOpen(false);
                       }} 
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -229,7 +229,7 @@ const Navbar = () => {
                     {isLoggedIn ? (
                       <div className="space-y-2">
                         <a 
-                          href={/${user}/profile}
+                          href={`/${user}/profile`}
                           onClick={() => setMobileMenuOpen(false)}
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                           Your Profile
