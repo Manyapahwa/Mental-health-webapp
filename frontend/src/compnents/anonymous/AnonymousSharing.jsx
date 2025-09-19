@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../navbar/Navbar';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const AnonymousSharing = () => {
   const user = localStorage.getItem('tokenUser');

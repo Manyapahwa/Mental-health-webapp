@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PhotoIcon } from '@heroicons/react/24/solid';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Signup() {
     const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ export default function Signup() {
                 formDataWithFile.append('profilePicture', profilePicture);
             }
 
-            const response = await fetch('http://localhost:4000/signup', {
+            const response = await fetch('${API_URL}/signup', {
                 method: 'POST',
                 body: formDataWithFile,
             });

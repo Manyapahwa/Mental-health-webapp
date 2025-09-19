@@ -5,6 +5,9 @@ import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
+
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -15,12 +18,14 @@ const MoodTrack=()=>{
     const [mood,setMood]=useState(null);
     const [moodData, setMoodData] = useState([]);
 
+    console.log(API_URL);
+
      const username = localStorage.getItem('tokenUser');
   console.log(username);
 
   useEffect(() => {
     // Fetch existing mood data for the user
-    axios.get(`http://localhost:4000/api/moods/${username}`)
+    axios.get(`${API_URL}/api/moods/${username}`)
       .then(response => setMoodData(response.data))
       .catch(error => console.error('Error fetching mood data:', error));
   }, [username]);
@@ -48,7 +53,7 @@ const MoodTrack=()=>{
 
     const handleMoodSelect=(emoji)=>{
         setMood(emoji);
-        axios.post(`http://localhost:4000/api/moods/${username}`,{date:selectedDate,mood:emoji})
+        axios.post(`${API_URL}/api/moods/${username}`,{date:selectedDate,mood:emoji})
         .then(response=> {
              setMoodData(prevData => [...prevData,response.data]);
              setIsModalOpen(false);

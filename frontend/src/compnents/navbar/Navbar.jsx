@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+const API_URL = process.env.REACT_APP_API_URL;
 
 import Loader from "react-js-loader";
 
@@ -47,7 +48,7 @@ const Navbar = () => {
   const confirmDelete = async () => {
     try {
       // Call the backend route to delete the user
-      await fetch(`http://localhost:4000/delete-user/${user}`, {
+      await fetch(`${API_URL}/delete-user/${user}`, {
         method: 'DELETE',
       });
       // Perform logout after deletion

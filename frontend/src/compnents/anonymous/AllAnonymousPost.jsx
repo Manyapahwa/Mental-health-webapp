@@ -63,6 +63,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../navbar/Navbar';
 import axios from 'axios';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const AllAnonymousPost = () => {
   const [anonymousPosts, setAnonymousPosts] = useState([]);
@@ -70,7 +71,7 @@ const AllAnonymousPost = () => {
   useEffect(() => {
     const fetchAnonymousPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/anonymousPosts');
+        const response = await axios.get('${API_URL}/anonymousPosts');
         setAnonymousPosts(response.data);
       } catch (error) {
         console.error('Error fetching anonymous posts:', error);

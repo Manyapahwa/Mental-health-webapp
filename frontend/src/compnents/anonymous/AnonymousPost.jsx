@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL;
 const AnonymousPost = () => {
   const [title, setTitle] = useState('');
   const [article, setArticle] = useState('');
   const [tags, setTags] = useState('');
   const user = localStorage.getItem('tokenUser');
   const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ const AnonymousPost = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:4000/createAnonymousPosts', {
+      const response = await fetch('${API_URL}/createAnonymousPosts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
