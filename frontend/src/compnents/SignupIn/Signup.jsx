@@ -52,7 +52,7 @@ export default function Signup() {
                 formDataWithFile.append('profilePicture', profilePicture);
             }
 
-            const response = await fetch('${API_URL}/signup', {
+            const response = await fetch(`${API_URL}/signup`, {
                 method: 'POST',
                 body: formDataWithFile,
             });
